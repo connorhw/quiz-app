@@ -1,0 +1,5 @@
+8/9 - 
+    09:30 - adding 'back of napkin' wireframes for each possible page the user is going to
+            come accross.
+    13:34 - finished adding the greybox wireframe for the questions pages. Button is now
+            functioning.
