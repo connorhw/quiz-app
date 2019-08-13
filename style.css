@@ -42,3 +42,22 @@ button {
   text-align: center;
   margin-top: 25px;
 }
+
+.answer {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+/* for index1.html and index2.html (below)*/
+
+#feedback {
+  border: 1px solid grey;
+  text-align: center;
+  margin-top: 25px;
+}
+
+#overall {
+  border: 1px solid grey;
+  text-align: center;
+  margin-top: 25px;
+}
