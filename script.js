@@ -1,3 +1,4 @@
+/*
 function startQuiz () {
     $('.startQuiz').on('click', '.startButton', function (event) {
       $('.startQuiz').remove();
@@ -37,4 +38,7 @@ function startQuiz () {
   }
   
   $(createQuiz);
+  
+  */
+
   

@@ -4,3 +4,6 @@
     13:34 - finished adding the greybox wireframe for the questions pages. Button is now
             functioning.
     19:41 - add button to the questions pages (DOM).
+
+8/14 -
+    10:24 - taking out the javascript for greybox wireframes. Will nav through html pages.
