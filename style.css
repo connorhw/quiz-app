@@ -24,51 +24,8 @@
   height: 50px;
 }
 
-/*
-
-.startQuiz {
-  border: 1px solid grey;
-  text-align: center;
-  height: 250px;
-  margin-top: 25px;
-}
-
-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 25px;
-}
-
-.questionAnswerForm {
+.quizForm {
   display: none;
-}
-
-.question {
-  border: 1px solid grey;
-  text-align: center;
   margin-top: 25px;
 }
-
-.answer {
-  border: 1px solid grey;
-  text-align: center;
-}
-
-
-
-
-#feedback {
-  border: 1px solid grey;
-  text-align: center;
-  margin-top: 25px;
-}
-
-#overall {
-  border: 1px solid grey;
-  text-align: center;
-  margin-top: 25px;
-}
-
-*/
 

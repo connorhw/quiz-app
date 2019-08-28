@@ -7,3 +7,22 @@
 
 8/14 -
     10:24 - taking out the javascript for greybox wireframes. Will nav through html pages.
+
+8/15-8/16 - BDD
+    Jump from question to question -
+
+    -when I click "let's find out" button then I can see a question with answers
+    -when I see list of answers, I should be able to click on them
+    -once an answer is selected, it is recorded and I'm able to click on the NEXT button to view the next
+     question.
+    -this will repeat for all five questions.
+    -on question #5, once an answer is selected, I will be able to click the DONE button, which will take
+     me to the feedback pages, where I'll see the breakdown of all the questions I got right or wrong. 
+     wrong answers will also have the correct answers next to them.
+    -I'll then be able to click the SCORE button, to see overall score I got on the quiz (should I switch 
+     this with previous step? Score before Feedback?) 
+    -Click the Restart button to start over again.
+
+8/19 - made first question page with multiple choice answers. When should I implement the answer validation?
+8/20 - 
+

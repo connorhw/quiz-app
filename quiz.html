@@ -8,8 +8,6 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
-	<script src="datastore.js">
-	</script>
 	<script src="script.js">
 	</script>
 </head>
@@ -20,24 +18,19 @@
 
 <body>
 	<main role="main">
-		<div class="question" style="border: 1px solid grey;">
-			<h1>Question</h1>
-		</div>
-		<div class="answer" style="border: 1px solid grey;">
-			<h3>Option1</h3>
-		</div>
-		<div class="answer" style="border: 1px solid grey;">
-			<h3>Option2</h3>
-		</div>
-		<div class="answer" style="border: 1px solid grey;">
-			<h3>Option3</h3>
-		</div>
-		<div class="answer" style="border: 1px solid grey;">
-			<h3>Option4</h3>
-		</div>
+    
+    <form>
+      <h2>What year was the BAA renamed to the NBA?</h2>
+      <input type="radio" value="${STORE}" name="answer" required></br>
+      <input type="radio" value="${STORE}" name="answer" required></br>
+      <input type="radio" value="${STORE}" name="answer" required></br>
+      <input type="radio" value="${STORE}" name="answer" required></br>
+      </br>
+    </form>
+    
 
 		<button type="button" class="nextButton"><a href="feedback.html">NEXT</a></button>`
-      
+   
     </main>
   </body>
 </html>
