@@ -16,8 +16,37 @@ const STORE = [
       'David Stern',
       'No one'
     ]
+  },
+  {
+    question: 'What is the record for the second most points scored by a player in an official NBA game and by whom?',
+    answers: [
+      '100-Wilt Chamberlain',
+      '82-LeBron James',
+      '81-Kobe Bryant',
+      '92-Michael Jordan'
+    ]
+  },
+  {
+    question: 'The NBAs development league is sponsored by ______ ?',
+    answers: [
+      'Nike',
+      'Adidas',
+      'Spalding',
+      'Gatorade'
+    ]
+  },
+  {
+    question: 'Whose silhouette is used as the leagues official logo??',
+    answers: [
+      'Jerry West',
+      'Larry O Brien',
+      'Earvin "Magic" Johnson',
+      'Michael Jordan'
+    ]
   }
 ];
+//test
+//test
 let questionNumber = 0;
 function startQuiz (){ 
   $('.startQuiz').on('click', '.startButton', function (event) {
@@ -34,7 +63,7 @@ function generateQuestion(){
   </div></br>
   <div class="answers">
     <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required> 
-    <span>${STORE[questionNumber].answers[questionNumber]}</span></br>
+    <span>${STORE[questionNumber].answers[0]}</span></br>
     <input type="radio" value="${STORE[questionNumber].answers[1]}" name="answer" required>
     <span>${STORE[questionNumber].answers[1]}</span></br>
     <input type="radio" value="${STORE[questionNumber].answers[2]}" name="answer" required> 
@@ -50,9 +79,32 @@ function renderQuestion(){
   $('.quizForm').html(generateQuestion());
 }
 
-function createQuiz () {
+
+function incrementQuestionNumber(){
+  questionNumber++;
+  $('.question').text(questionNumber);
+  //return questionNumber;
+}
+
+function renderNextQuestion(){
+  $('main').on('click', '.nextButton', function (event) {
+    incrementQuestionNumber();
+    renderQuestion();
+    //userSelectAnswer();
+  });
+}
+
+/*function generateNextQuestion(){
+  incrementQuestionNumber();
+  generateQuestion();
+}
+*/
+function createQuiz(){
   startQuiz();
   renderQuestion();
+  //incrementQuestionNumber();
+  //generateNextQuestion();
+  renderNextQuestion();
   //userSelectAnswer();
   //renderNextQuestion();
 }
