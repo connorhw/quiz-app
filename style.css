@@ -3,6 +3,18 @@
 }
 
 
+.answers {
+   
+  margin-left: 50px;
+  /*
+  margin-right: auto;
+  */
+  display: block;
+  width: 200px;
+  height: 200px;
+  text-align: left;
+}
+
 .logo {
   display: block;
   margin-left: auto;
