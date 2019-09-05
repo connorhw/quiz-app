@@ -6,7 +6,8 @@ const STORE = [
       '1959',
       '1969',
       '1979'
-    ]
+    ],
+    correctAnswer: '1949'
   },
   {
     question: 'Whom was the Commissioner before Adam Silver?',
@@ -15,7 +16,8 @@ const STORE = [
       'Larry O Brien',
       'David Stern',
       'No one'
-    ]
+    ],
+    correctAnswer: ''
   },
   {
     question: 'What is the record for the second most points scored by a player in an official NBA game and by whom?',
@@ -24,7 +26,8 @@ const STORE = [
       '82-LeBron James',
       '81-Kobe Bryant',
       '92-Michael Jordan'
-    ]
+    ],
+    correctAnswer: ''
   },
   {
     question: 'The NBAs development league is sponsored by ______ ?',
@@ -33,7 +36,8 @@ const STORE = [
       'Adidas',
       'Spalding',
       'Gatorade'
-    ]
+    ],
+    correctAnswer: ''
   },
   {
     question: 'Whose silhouette is used as the leagues official logo??',
@@ -42,28 +46,31 @@ const STORE = [
       'Larry O Brien',
       'Earvin "Magic" Johnson',
       'Michael Jordan'
-    ]
+    ],
+    correctAnswer: ''
   }
 ];
-//test
-//test
+
+let numberCorrect = 0;
+let numberIncorrect = 0;
 let questionNumber = 0;
 function startQuiz (){ 
   $('.startQuiz').on('click', '.startButton', function (event) {
     $('.startQuiz').remove();
     $('.quizForm').css('display', 'block');
     //$('.questionNumber').text(1);
-});
+    console.log(questionNumber);
+    
+  });
 }
 
-function generateQuestion(){
-  if (questionNumber < 5){
-      return `<div class="question">
-        ${STORE[questionNumber].question}
-      </div></br>
-      
+function generateQuestion() {
+  if (questionNumber < 5) {
+    return `<div class="question">
+        ${STORE[questionNumber].question};
+      </br>
+      <form>
       <div class="answers">
-
         <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required> 
         <span>${STORE[questionNumber].answers[0]}</span></br>
         <input type="radio" value="${STORE[questionNumber].answers[1]}" name="answer" required>
@@ -74,15 +81,41 @@ function generateQuestion(){
         <span>${STORE[questionNumber].answers[3]}</span></br>
         </br>
         <button type="submit" class="nextButton">Next</button>
-      
+      </div>
+      </form>
       </div>`
-   } else{
-     renderResults();
-   }
+  } else {
+    renderResults();
+  }
+}
+
+/*function ifCorrect(){
+  console.log("correct!");
+}
+
+function ifIncorrect(){
+  console.log("wrong!");
+}
+*/
+
+function userSelectsOption() {
+  $('form').on('submit', function (event) {
+    event.preventDefault();
+    let selected = $('input:checked');
+    let answer = selected.val();
+    let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+    if (answer === correctAnswer) {
+      //ifCorrect();
+      console.log('correct!');
+    } else {
+      console.log('wrong!');
+      //ifIncorrect();
+    }
+  });
 }
 
 function generateResults(){
-  return `<div id="feedback"style="border: 1px solid grey;">
+  return `<div id="feedback">
             <h2>Here's some feedback:</h2>
               <div id="correct" style="border: 10px solid green;">What you know (correct answers)</div>
               <div id="incorrect" style="border: 10px solid red;">What you don't (incorrect answers)</div>
@@ -96,12 +129,13 @@ function renderResults(){
 
 function renderQuestion(){
   $('.quizForm').html(generateQuestion());
-}
 
+}
 
 function incrementQuestionNumber(){
   questionNumber++;
-  $('.question').text(questionNumber);
+  $('.question').text(questionNumber+1);
+  //console.log(questionNumber);
   //return questionNumber;
 }
 
@@ -109,23 +143,16 @@ function renderNextQuestion(){
   $('main').on('click', '.nextButton', function (event) {
     incrementQuestionNumber();
     renderQuestion();
-    //userSelectAnswer();
+    userSelectsOption();
   });
 }
 
-/*function generateNextQuestion(){
-  incrementQuestionNumber();
-  generateQuestion();
-}
-*/
+
 function createQuiz(){
   startQuiz();
   renderQuestion();
-  //incrementQuestionNumber();
-  //generateNextQuestion();
+  userSelectsOption();
   renderNextQuestion();
-  //userSelectAnswer();
-  //renderNextQuestion();
 }
 
 $(createQuiz);

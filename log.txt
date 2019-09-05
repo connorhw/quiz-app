@@ -25,4 +25,12 @@
 
 8/19 - made first question page with multiple choice answers. When should I implement the answer validation?
 8/20 - 
+9/4 - implement answer validation 
+    
+        when I click on answer option it should prompt me
+            -if correct, let them know
+                -add 1 to score (out of 5)
+            -if incorrect, let them know 
+                -keep score same (out of 5)
+        Be directed to next question
 
