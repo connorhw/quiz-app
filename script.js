@@ -17,7 +17,7 @@ const STORE = [
       'David Stern',
       'No one'
     ],
-    correctAnswer: ''
+    correctAnswer: 'David Stern'
   },
   {
     question: 'What is the record for the second most points scored by a player in an official NBA game and by whom?',
@@ -27,7 +27,7 @@ const STORE = [
       '81-Kobe Bryant',
       '92-Michael Jordan'
     ],
-    correctAnswer: ''
+    correctAnswer: '81-Kobe Bryant'
   },
   {
     question: 'The NBAs development league is sponsored by ______ ?',
@@ -37,7 +37,7 @@ const STORE = [
       'Spalding',
       'Gatorade'
     ],
-    correctAnswer: ''
+    correctAnswer: 'Gatorade'
   },
   {
     question: 'Whose silhouette is used as the leagues official logo??',
@@ -47,7 +47,7 @@ const STORE = [
       'Earvin "Magic" Johnson',
       'Michael Jordan'
     ],
-    correctAnswer: ''
+    correctAnswer: 'Jerry West'
   }
 ];
 
@@ -89,29 +89,57 @@ function generateQuestion() {
   }
 }
 
-/*function ifCorrect(){
-  console.log("correct!");
+function ifCorrect(){
+  numberCorrect++;
+  console.log(numberCorrect);
+  //console.log("correct!");
 }
 
 function ifIncorrect(){
-  console.log("wrong!");
+  numberIncorrect++;
+  console.log(numberIncorrect);
+  generateIncorrectFeedback;
+  //console.log("wrong!");
 }
-*/
 
-function userSelectsOption() {
-  $('form').on('submit', function (event) {
-    event.preventDefault();
+function assignEventListenerToFormSubmitionClick() {
+  //console.log("assign event listener");
+    $('form').on('submit', function() {
+      event.preventDefault();
     let selected = $('input:checked');
     let answer = selected.val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
     if (answer === correctAnswer) {
-      //ifCorrect();
-      console.log('correct!');
+      ifCorrect();
+      //console.log('correct!');
     } else {
-      console.log('wrong!');
-      //ifIncorrect();
+      //console.log('wrong!');
+      ifIncorrect();
     }
   });
+}
+/*
+function validateAnswer(){
+  console.log("validate answer");
+  event.preventDefault();
+  let selected = $('input:checked');
+  let answer = selected.val();
+  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+  if (answer === correctAnswer) {
+    ifCorrect();
+    //console.log('correct!');
+  } else {
+    //console.log('wrong!');
+    ifIncorrect();
+  }
+
+}
+*/
+function generateIncorrectFeedback(){
+  $('.quizForm').html(`<div id="incorrectFeedback">
+            <h2>Wrong!</h2>
+            <h4>The correct answer is ...</4>
+            </div>`)
 }
 
 function generateResults(){
@@ -129,6 +157,7 @@ function renderResults(){
 
 function renderQuestion(){
   $('.quizForm').html(generateQuestion());
+  //$(document.body).append(generateQuestion());
 
 }
 
@@ -143,7 +172,7 @@ function renderNextQuestion(){
   $('main').on('click', '.nextButton', function (event) {
     incrementQuestionNumber();
     renderQuestion();
-    userSelectsOption();
+    assignEventListenerToFormSubmitionClick();
   });
 }
 
@@ -151,8 +180,9 @@ function renderNextQuestion(){
 function createQuiz(){
   startQuiz();
   renderQuestion();
-  userSelectsOption();
+  assignEventListenerToFormSubmitionClick();
   renderNextQuestion();
+  //generateIncorrectFeedback();
 }
 
 $(createQuiz);
