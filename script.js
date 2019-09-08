@@ -98,7 +98,7 @@ function ifCorrect(){
 function ifIncorrect(){
   numberIncorrect++;
   console.log(numberIncorrect);
-  generateIncorrectFeedback;
+  renderIncorrectFeedback();
   //console.log("wrong!");
 }
 
@@ -136,10 +136,14 @@ function validateAnswer(){
 }
 */
 function generateIncorrectFeedback(){
-  $('.quizForm').html(`<div id="incorrectFeedback">
+  return `<div id="incorrectFeedback">
             <h2>Wrong!</h2>
             <h4>The correct answer is ...</4>
-            </div>`)
+            </div>`
+}
+
+function renderIncorrectFeedback(){
+  $('.quizForm').html(generateIncorrectFeedback());
 }
 
 function generateResults(){
