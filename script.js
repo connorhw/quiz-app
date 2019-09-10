@@ -67,20 +67,20 @@ function startQuiz (){
 function generateQuestion() {
   if (questionNumber < 5) {
     return `<div class="question">
-        ${STORE[questionNumber].question};
+        ${STORE[questionNumber].question}
       </br>
       <form>
       <div class="answers">
         <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required> 
-        <span>${STORE[questionNumber].answers[0]}</span></br>
+        <label>${STORE[questionNumber].answers[0]}</label></br>
         <input type="radio" value="${STORE[questionNumber].answers[1]}" name="answer" required>
-        <span>${STORE[questionNumber].answers[1]}</span></br>
+        <label>${STORE[questionNumber].answers[1]}</label></br>
         <input type="radio" value="${STORE[questionNumber].answers[2]}" name="answer" required> 
-        <span>${STORE[questionNumber].answers[2]}</span></br>
+        <label>${STORE[questionNumber].answers[2]}</label></br>
         <input type="radio" value="${STORE[questionNumber].answers[3]}" name="answer" required> 
-        <span>${STORE[questionNumber].answers[3]}</span></br>
+        <label>${STORE[questionNumber].answers[3]}</label></br>
         </br>
-        <button type="submit" class="nextButton">Next</button>
+        <button type="submit" class="submitButton">Next</button>
       </div>
       </form>
       </div>`
@@ -91,16 +91,28 @@ function generateQuestion() {
 
 function ifCorrect(){
   numberCorrect++;
-  console.log(numberCorrect);
+  //console.log(numberCorrect);
+  userFeedbackForCorrectAnswers();
   //console.log("correct!");
 }
 
 function ifIncorrect(){
   numberIncorrect++;
-  console.log(numberIncorrect);
+  //console.log(numberIncorrect);
   renderIncorrectFeedback();
   //console.log("wrong!");
 }
+
+function userFeedbackForCorrectAnswers(){
+  $('.quizForm').html(`<div class="correctFeedback>
+    <h2>Correct!</h2>
+    <button type=button class="nextButton">Next</button>
+  </div>`);
+}
+
+/*function userFeedbackForIncorrectAnswers(){
+  let correctAnswer
+}*/
 
 function assignEventListenerToFormSubmitionClick() {
   //console.log("assign event listener");
@@ -152,7 +164,7 @@ function generateResults(){
               <div id="correct" style="border: 10px solid green;">What you know (correct answers)</div>
               <div id="incorrect" style="border: 10px solid red;">What you don't (incorrect answers)</div>
             </div>
-            <button type="button" class="nextButton"><a href="results.html">NEXT(Results)</a></button>`
+            <button type="button" class="submitButton"><a href="results.html">NEXT(Results)</a></button>`
 }
 
 function renderResults(){
@@ -173,7 +185,7 @@ function incrementQuestionNumber(){
 }
 
 function renderNextQuestion(){
-  $('main').on('click', '.nextButton', function (event) {
+  $('main').on('click', '.submitButton', function (event) {
     incrementQuestionNumber();
     renderQuestion();
     assignEventListenerToFormSubmitionClick();
