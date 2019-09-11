@@ -80,7 +80,7 @@ function generateQuestion() {
         <input type="radio" value="${STORE[questionNumber].answers[3]}" name="answer" required> 
         <label>${STORE[questionNumber].answers[3]}</label></br>
         </br>
-        <button type="submit" class="submitButton">Next</button>
+        <button type="submit" class="submitButton">Submit</button>
       </div>
       </form>
       </div>`
@@ -106,7 +106,7 @@ function ifIncorrect(){
 function userFeedbackForCorrectAnswers(){
   $('.quizForm').html(`<div class="correctFeedback>
     <h2>Correct!</h2>
-    <button type=button class="nextButton">Next</button>
+    <button type="button" class="nextButton">Next</button>
   </div>`);
 }
 
@@ -116,7 +116,7 @@ function userFeedbackForCorrectAnswers(){
 
 function assignEventListenerToFormSubmitionClick() {
   //console.log("assign event listener");
-    $('form').on('submit', function() {
+    $('form').on('submit', function(event) {
       event.preventDefault();
     let selected = $('input:checked');
     let answer = selected.val();
