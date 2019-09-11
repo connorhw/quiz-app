@@ -128,6 +128,7 @@ function assignEventListenerToFormSubmitionClick() {
       //console.log('wrong!');
       ifIncorrect();
     }
+    renderNextQuestion();
   });
 }
 /*
@@ -185,7 +186,7 @@ function incrementQuestionNumber(){
 }
 
 function renderNextQuestion(){
-  $('main').on('click', '.submitButton', function (event) {
+  $('main').on('click', '.nextButton', function (event) {
     incrementQuestionNumber();
     renderQuestion();
     assignEventListenerToFormSubmitionClick();
