@@ -104,7 +104,7 @@ function ifIncorrect(){
 }
 
 function userFeedbackForCorrectAnswers(){
-  $('.quizForm').html(`<div class="correctFeedback>
+  $('.quizForm').html(`<div class="correctFeedback">
     <h2>Correct!</h2>
     <button type="button" class="nextButton">Next</button>
   </div>`);
