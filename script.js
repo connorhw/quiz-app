@@ -91,16 +91,12 @@ function generateQuestion() {
 
 function ifCorrect(){
   numberCorrect++;
-  //console.log(numberCorrect);
   userFeedbackForCorrectAnswers();
-  //console.log("correct!");
 }
 
 function ifIncorrect(){
   numberIncorrect++;
-  //console.log(numberIncorrect);
-  renderIncorrectFeedback();
-  //console.log("wrong!");
+  userFeedbackForIncorrectAnswers();
 }
 
 function userFeedbackForCorrectAnswers(){
@@ -110,9 +106,13 @@ function userFeedbackForCorrectAnswers(){
   </div>`);
 }
 
-/*function userFeedbackForIncorrectAnswers(){
-  let correctAnswer
-}*/
+function userFeedbackForIncorrectAnswers(){
+  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+  $('.quizForm').html(`<div class="incorrectFeedback">
+    <h2>Wrong!</h2>
+    <button type="button" class="nextButton">Next</button>
+  </div>`);
+}
 
 function assignEventListenerToFormSubmitionClick() {
   //console.log("assign event listener");
@@ -123,40 +123,10 @@ function assignEventListenerToFormSubmitionClick() {
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
     if (answer === correctAnswer) {
       ifCorrect();
-      //console.log('correct!');
     } else {
-      //console.log('wrong!');
       ifIncorrect();
     }
-    renderNextQuestion();
   });
-}
-/*
-function validateAnswer(){
-  console.log("validate answer");
-  event.preventDefault();
-  let selected = $('input:checked');
-  let answer = selected.val();
-  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  if (answer === correctAnswer) {
-    ifCorrect();
-    //console.log('correct!');
-  } else {
-    //console.log('wrong!');
-    ifIncorrect();
-  }
-
-}
-*/
-function generateIncorrectFeedback(){
-  return `<div id="incorrectFeedback">
-            <h2>Wrong!</h2>
-            <h4>The correct answer is ...</4>
-            </div>`
-}
-
-function renderIncorrectFeedback(){
-  $('.quizForm').html(generateIncorrectFeedback());
 }
 
 function generateResults(){
@@ -199,7 +169,6 @@ function createQuiz(){
   renderQuestion();
   assignEventListenerToFormSubmitionClick();
   renderNextQuestion();
-  //generateIncorrectFeedback();
 }
 
 $(createQuiz);
