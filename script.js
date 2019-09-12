@@ -86,6 +86,7 @@ function generateQuestion() {
       </div>`
   } else {
     renderResults();
+    restartQuiz ();
   }
 }
 
@@ -129,17 +130,17 @@ function assignEventListenerToFormSubmitionClick() {
   });
 }
 
-function generateResults(){
+function generateResultsPage(){
   return `<div id="feedback">
-            <h2>Here's some feedback:</h2>
+            <h2>You scored:</h2>
               <div id="correct" style="border: 10px solid green;">What you know (correct answers)</div>
               <div id="incorrect" style="border: 10px solid red;">What you don't (incorrect answers)</div>
             </div>
-            <button type="button" class="submitButton"><a href="results.html">NEXT(Results)</a></button>`
+            <button type="button" class="restartButton">Restart Quiz</button>`
 }
 
 function renderResults(){
-  $('.quizForm').html(generateResults());
+  $('.quizForm').html(generateResultsPage());
 }
 
 function renderQuestion(){
@@ -153,6 +154,12 @@ function incrementQuestionNumber(){
   $('.question').text(questionNumber+1);
   //console.log(questionNumber);
   //return questionNumber;
+}
+
+function restartQuiz(){
+  $('main').on('click', '.restartButton', function (event) {
+    location.reload();
+  });
 }
 
 function renderNextQuestion(){

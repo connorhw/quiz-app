@@ -34,3 +34,11 @@
                 -keep score same (out of 5)
         Be directed to next question
 
+9/5-9/10 Implementing above and more...
+
+9/11 - Functionality of quiz is complete, except for one aspect: rendering the score onto the screen
+       Once that is complete, go over: 1. semantic HTML, along with CSS and jQuery 
+                                       2. a11y best practices 
+                                       3. responsive design 
+                                       4. keyboard-only usability
+                                       5. add css: photos, fonts, etc...
