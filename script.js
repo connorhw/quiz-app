@@ -54,20 +54,44 @@ const STORE = [
 let numberCorrect = 0;
 let numberIncorrect = 0;
 let questionNumber = 0;
+let scoreRight = -1;
+let scoreWrong = -1;
+let questionNumberOnTop = 0;
+
 function startQuiz (){ 
   $('.startQuiz').on('click', '.startButton', function (event) {
     $('.startQuiz').remove();
     $('.quizForm').css('display', 'block');
     //$('.questionNumber').text(1);
     console.log(questionNumber);
+    renderAndIncrementCorrectScore();
+   renderAndIncrementWrongScore();
     
   });
 }
 
+function questionNumberTop(){
+  questionNumberOnTop++
+  $('.number').html(`Question: `+ questionNumberOnTop + ` of 5`);
+}
+
+function renderAndIncrementCorrectScore(){
+  scoreRight++;
+  $('.score').html(`Correct: `+ scoreRight);
+}
+
+function renderAndIncrementWrongScore(){
+  scoreWrong++;
+  $('.score2').html(`Wrong: `+ scoreWrong);
+}
+
+
 function generateQuestion() {
   if (questionNumber < 5) {
-    return `<div class="question">
+    return `
+      <div class="question">
         ${STORE[questionNumber].question}
+      </br>
       </br>
       <form>
       <div class="answers">
@@ -116,16 +140,22 @@ function userFeedbackForIncorrectAnswers(){
 }
 
 function assignEventListenerToFormSubmitionClick() {
+  if(questionNumberOnTop < 5){
+    questionNumberTop();
+  }
   //console.log("assign event listener");
     $('form').on('submit', function(event) {
       event.preventDefault();
     let selected = $('input:checked');
     let answer = selected.val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+    //questionNumberOnTop();
     if (answer === correctAnswer) {
       ifCorrect();
+      renderAndIncrementCorrectScore();
     } else {
       ifIncorrect();
+     renderAndIncrementWrongScore();
     }
   });
 }
@@ -133,10 +163,9 @@ function assignEventListenerToFormSubmitionClick() {
 function generateResultsPage(){
   return `<div id="feedback">
             <h2>You scored:</h2>
-              <div id="correct" style="border: 10px solid green;">What you know (correct answers)</div>
-              <div id="incorrect" style="border: 10px solid red;">What you don't (incorrect answers)</div>
-            </div>
-            <button type="button" class="restartButton">Restart Quiz</button>`
+              
+            <button type="button" class="restartButton">Restart Quiz</button>
+          </div>`
 }
 
 function renderResults(){
@@ -145,6 +174,7 @@ function renderResults(){
 
 function renderQuestion(){
   $('.quizForm').html(generateQuestion());
+  //questionNumberTop();
   //$(document.body).append(generateQuestion());
 
 }
@@ -154,6 +184,10 @@ function incrementQuestionNumber(){
   $('.question').text(questionNumber+1);
   //console.log(questionNumber);
   //return questionNumber;
+}
+
+function renderQuestNumber(){
+
 }
 
 function restartQuiz(){
@@ -167,6 +201,7 @@ function renderNextQuestion(){
     incrementQuestionNumber();
     renderQuestion();
     assignEventListenerToFormSubmitionClick();
+    //renderScore();
   });
 }
 
