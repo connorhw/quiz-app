@@ -65,7 +65,7 @@ function startQuiz (){
     //$('.questionNumber').text(1);
     console.log(questionNumber);
     renderAndIncrementCorrectScore();
-   renderAndIncrementWrongScore();
+    renderAndIncrementWrongScore();
     
   });
 }
@@ -135,6 +135,8 @@ function userFeedbackForIncorrectAnswers(){
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
   $('.quizForm').html(`<div class="incorrectFeedback">
     <h2>Wrong!</h2>
+    <div>The correct answer is: ` + correctAnswer + `</div>
+    </br>
     <button type="button" class="nextButton">Next</button>
   </div>`);
 }
@@ -163,7 +165,8 @@ function assignEventListenerToFormSubmitionClick() {
 function generateResultsPage(){
   return `<div id="feedback">
             <h2>You scored:</h2>
-              
+            <div>`+ numberCorrect +` out of 5</div>
+            </br>
             <button type="button" class="restartButton">Restart Quiz</button>
           </div>`
 }
