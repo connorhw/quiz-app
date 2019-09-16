@@ -2,17 +2,31 @@
   text-align: center;
 }
 
+body {
+  background-image: url("https://user-images.githubusercontent.com/22334563/62798002-bf794000-bacc-11e9-8d10-ad0c517486a1.jpg");
+  background-color: #cccccc;
+}
+
+main {
+  background-color: beige;
+  height: 180px;
+  background: rgba(204, 204, 204, 0.8);
+}
 
 .answers {
-   
-  margin-left: 50px;
-  /*
+  display: flex;
+  flex-direction: column;
   margin-right: auto;
-  */
+  margin-left: auto;
+  width: 250px;
+  height: 250px; 
+}
+
+.answerOption {
   display: block;
-  width: 200px;
-  height: 200px;
+  margin-left: 60px;
   text-align: left;
+  align-items: center;
 }
 
 .logo {
@@ -22,6 +36,7 @@
   text-align: center;
   width: 25%;
   height: 25%;
+  
 }
 
 #score {
@@ -38,5 +53,11 @@
 .quizForm {
   display: none;
   margin-top: 25px;
+}
+
+.question {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 

@@ -62,7 +62,6 @@ function startQuiz (){
   $('.startQuiz').on('click', '.startButton', function (event) {
     $('.startQuiz').remove();
     $('.quizForm').css('display', 'block');
-    //$('.questionNumber').text(1);
     console.log(questionNumber);
     renderAndIncrementCorrectScore();
     renderAndIncrementWrongScore();
@@ -95,14 +94,27 @@ function generateQuestion() {
       </br>
       <form>
       <div class="answers">
+      
+        <label class="answerOption">
         <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required> 
-        <label>${STORE[questionNumber].answers[0]}</label></br>
+        <label>${STORE[questionNumber].answers[0]}</label>
+        </label>
+
+        <label class="answerOption">
         <input type="radio" value="${STORE[questionNumber].answers[1]}" name="answer" required>
-        <label>${STORE[questionNumber].answers[1]}</label></br>
+        <label>${STORE[questionNumber].answers[1]}</label>
+        </label>
+
+        <label class="answerOption">
         <input type="radio" value="${STORE[questionNumber].answers[2]}" name="answer" required> 
-        <label>${STORE[questionNumber].answers[2]}</label></br>
+        <label>${STORE[questionNumber].answers[2]}</label>
+        </label>
+
+        <label class="answerOption">
         <input type="radio" value="${STORE[questionNumber].answers[3]}" name="answer" required> 
-        <label>${STORE[questionNumber].answers[3]}</label></br>
+        <label>${STORE[questionNumber].answers[3]}</label>
+        </label>
+
         </br>
         <button type="submit" class="submitButton">Submit</button>
       </div>
@@ -145,13 +157,11 @@ function assignEventListenerToFormSubmitionClick() {
   if(questionNumberOnTop < 5){
     questionNumberTop();
   }
-  //console.log("assign event listener");
     $('form').on('submit', function(event) {
       event.preventDefault();
     let selected = $('input:checked');
     let answer = selected.val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-    //questionNumberOnTop();
     if (answer === correctAnswer) {
       ifCorrect();
       renderAndIncrementCorrectScore();
@@ -177,16 +187,11 @@ function renderResults(){
 
 function renderQuestion(){
   $('.quizForm').html(generateQuestion());
-  //questionNumberTop();
-  //$(document.body).append(generateQuestion());
-
 }
 
 function incrementQuestionNumber(){
   questionNumber++;
   $('.question').text(questionNumber+1);
-  //console.log(questionNumber);
-  //return questionNumber;
 }
 
 function renderQuestNumber(){
@@ -204,7 +209,6 @@ function renderNextQuestion(){
     incrementQuestionNumber();
     renderQuestion();
     assignEventListenerToFormSubmitionClick();
-    //renderScore();
   });
 }
 
