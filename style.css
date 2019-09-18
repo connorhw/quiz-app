@@ -13,6 +13,13 @@ main {
   background: rgba(204, 204, 204, 0.8);
 }
 
+.number, .score, .score2 {
+  background-color: beige;
+  height: 30px;
+  height: 25%;
+  background: rgba(204, 204, 204, 0.8);
+}
+
 .answers {
   display: flex;
   flex-direction: column;
@@ -36,6 +43,8 @@ main {
   text-align: center;
   width: 25%;
   height: 25%;
+  /*background-color: beige;
+  background: rgba(204, 204, 204, 0.8);*/
   
 }
 
